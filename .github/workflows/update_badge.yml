@@ -1,0 +1,24 @@
+name: Update THM Badge
+
+on:
+  schedule:
+    - cron: "0 10 * * *" # runs daily at 10:00 UTC
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      # Install ImageMagick only
+      - name: Install ImageMagick
+        run: |
+          sudo apt update
+          sudo apt install -y imagemagick
+
+      # Run the badge update script
+      - name: Run badge update
+        run: bash update_badge.sh
+        env:
+          GH_TOKEN: ${{ secrets.GHUB_TOKEN }}
