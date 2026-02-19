@@ -2,7 +2,7 @@ name: Update THM Badge
 
 on:
   schedule:
-    - cron: "0 10 * * *" # runs daily at 10:00 UTC
+    - cron: "0 0 * * *" # At Midnight 
   workflow_dispatch:
 
 jobs:
